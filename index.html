@@ -1,334 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowletter AI - Automate Your Content</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flowletter AI - Automate Your Content</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+  <!-- Favicon (SVG as data URL) -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href='data:image/svg+xml;utf8,
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+      <rect width="96" height="96" rx="18" ry="18" fill="%232f80ed"/>
+      <g fill="none" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Envelope -->
+        <rect x="16" y="44" width="64" height="36" rx="6" />
+        <path d="M16 48l32 20 32-20" />
+        <!-- Cloud -->
+        <path d="M62 40h6a12 12 0 0 0 0-24 14 14 0 0 0-26-4 12 12 0 0 0-18 10c0 10 8 12 8 12h10"/>
+        <!-- Circuit prongs -->
+        <path d="M48 40v-6" />
+        <path d="M40 42v-4" />
+        <path d="M56 42v-4" />
+        <!-- Circuit dots -->
+        <circle cx="48" cy="30" r="2.5" fill="white" stroke="none"/>
+        <circle cx="40" cy="34" r="2.5" fill="white" stroke="none"/>
+        <circle cx="56" cy="34" r="2.5" fill="white" stroke="none"/>
+      </g>
+    </svg>'
+  />
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+  <!-- Optional PNG fallbacks (host later if you want)
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  -->
 
-        nav {
-            padding: 30px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        .hero {
-            text-align: center;
-            padding: 80px 0 120px;
-            position: relative;
-        }
+    nav { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; }
 
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 24px;
-            line-height: 1.1;
-            animation: fadeInUp 0.8s ease-out;
-        }
+    .logo {
+      font-size: 28px; font-weight: 700; color: white;
+      display: flex; align-items: center; gap: 10px;
+    }
 
-        .hero .subtitle {
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 48px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
+    .logo-svg {
+      width: 40px; height: 40px; display: block; border-radius: 10px;
+    }
 
-        .waitlist-form {
-            display: flex;
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        }
+    .hero { text-align: center; padding: 80px 0 120px; position: relative; }
 
-        .waitlist-form input {
-            flex: 1;
-            padding: 18px 24px;
-            font-size: 16px;
-            border: none;
-            border-radius: 12px;
-            outline: none;
-            background: white;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+    .hero h1 {
+      font-size: 64px; font-weight: 800; color: white;
+      margin-bottom: 24px; line-height: 1.1; animation: fadeInUp 0.8s ease-out;
+    }
 
-        .waitlist-form input:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
+    .hero .subtitle {
+      font-size: 24px; color: rgba(255,255,255,0.9); margin-bottom: 48px;
+      max-width: 700px; margin-left: auto; margin-right: auto;
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
 
-        .waitlist-form button {
-            padding: 18px 36px;
-            font-size: 16px;
-            font-weight: 600;
-            background: #10b981;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
+    .waitlist-form {
+      display: flex; gap: 12px; max-width: 500px; margin: 0 auto;
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
 
-        .waitlist-form button:hover {
-            background: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-        }
+    .waitlist-form input {
+      flex: 1; padding: 18px 24px; font-size: 16px; border: none;
+      border-radius: 12px; outline: none; background: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 80px;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
-        }
+    .waitlist-form input:focus {
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
+    .waitlist-form button {
+      padding: 18px 36px; font-size: 16px; font-weight: 600; background: #10b981;
+      color: white; border: none; border-radius: 12px; cursor: pointer;
+      transition: all 0.3s; white-space: nowrap;
+    }
 
-        .feature-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
+    .waitlist-form button:hover {
+      background: #059669; transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16,185,129,0.4);
+    }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; margin-top: 80px; animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
 
-        .feature-card h3 {
-            font-size: 24px;
-            color: white;
-            margin-bottom: 12px;
-        }
+    .feature-card {
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+      padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
 
-        .feature-card p {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
+    .feature-card:hover {
+      transform: translateY(-8px); background: rgba(255,255,255,0.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
 
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
+    .feature-icon {
+      width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 15px; display: flex; align-items: center; justify-content: center;
+      font-size: 30px; margin-bottom: 20px;
+    }
 
-        .shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
+    .feature-card h3 { font-size: 24px; color: white; margin-bottom: 12px; }
 
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
+    .feature-card p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.6; }
 
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 5s;
-        }
+    .floating-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; overflow: hidden; }
 
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 10s;
-        }
+    .shape { position: absolute; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 20s infinite; }
+    .shape:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
+    .shape:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 10%; animation-delay: 5s; }
+    .shape:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: 10s; }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(180deg);
-            }
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .success-message {
-            display: none;
-            background: #10b981;
-            color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            margin-top: 16px;
-            animation: fadeInUp 0.5s ease-out;
-        }
+    .success-message {
+      display: none; background: #10b981; color: white; padding: 16px 24px;
+      border-radius: 12px; margin-top: 16px; animation: fadeInUp 0.5s ease-out;
+    }
 
-        .success-message.show {
-            display: block;
-        }
+    .success-message.show { display: block; }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .hero .subtitle {
-                font-size: 18px;
-            }
-
-            .waitlist-form {
-                flex-direction: column;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 40px; }
+      .hero .subtitle { font-size: 18px; }
+      .waitlist-form { flex-direction: column; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
 
-    <div class="container">
-        <nav>
-            <div class="logo">
-                <div class="logo-icon">✨</div>
-                <span>Flowletter AI</span>
-            </div>
-        </nav>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <!-- Inline SVG logo (no external file needed) -->
+        <svg class="logo-svg" viewBox="0 0 96 96" aria-hidden="true" role="img">
+          <rect width="96" height="96" rx="10" ry="10" fill="#2f80ed"/>
+          <g fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Envelope -->
+            <rect x="16" y="44" width="64" height="36" rx="6"/>
+            <path d="M16 48l32 20 32-20"/>
+            <!-- Cloud -->
+            <path d="M62 40h6a12 12 0 0 0 0-24 14 14 0 0 0-26-4 12 12 0 0 0-18 10c0 10 8 12 8 12h10"/>
+            <!-- Circuit prongs -->
+            <path d="M48 40v-6"/>
+            <path d="M40 42v-4"/>
+            <path d="M56 42v-4"/>
+            <!-- Circuit dots -->
+            <circle cx="48" cy="30" r="2.5" fill="white" stroke="none"/>
+            <circle cx="40" cy="34" r="2.5" fill="white" stroke="none"/>
+            <circle cx="56" cy="34" r="2.5" fill="white" stroke="none"/>
+          </g>
+        </svg>
+        <span>Flowletter AI</span>
+      </div>
+    </nav>
 
-        <div class="hero">
-            <h1>Content Creation,<br>Fully Automated</h1>
-            <p class="subtitle">Let AI write and schedule your Facebook posts and newsletters. Save hours every week while growing your audience.</p>
-            
-            <form class="waitlist-form" id="waitlistForm">
-                <input type="email" id="emailInput" placeholder="Enter your email" required>
-                <button type="submit">Join Waitlist</button>
-            </form>
-            <div class="success-message" id="successMessage">
-                🎉 You're on the list! We'll notify you when Flowletter AI launches.
-            </div>
+    <div class="hero">
+      <h1>Content Creation,<br/>Fully Automated</h1>
+      <p class="subtitle">
+        Let AI write and schedule your Facebook posts and newsletters. Save hours every week while growing your audience.
+      </p>
 
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3>AI-Powered Writing</h3>
-                    <p>Generate engaging posts and newsletters that sound like you, powered by advanced AI.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Full Automation</h3>
-                    <p>Set it once and let Flowletter handle scheduling, posting, and distribution automatically.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Multi-Platform</h3>
-                    <p>Reach your audience everywhere with seamless Facebook and newsletter integration.</p>
-                </div>
-            </div>
+      <form class="waitlist-form" id="waitlistForm">
+        <input type="email" id="emailInput" placeholder="Enter your email" required />
+        <button type="submit">Join Waitlist</button>
+      </form>
+      <div class="success-message" id="successMessage">
+        🎉 You're on the list! We'll notify you when Flowletter AI launches.
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>AI-Powered Writing</h3>
+          <p>Generate engaging posts and newsletters that sound like you, powered by advanced AI.</p>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Full Automation</h3>
+          <p>Set it once and let Flowletter handle scheduling, posting, and distribution automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Multi-Platform</h3>
+          <p>Reach your audience everywhere with seamless Facebook and newsletter integration.</p>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        const form = document.getElementById('waitlistForm');
-        const emailInput = document.getElementById('emailInput');
-        const successMessage = document.getElementById('successMessage');
+  <script>
+    const form = document.getElementById('waitlistForm');
+    const emailInput = document.getElementById('emailInput');
+    const successMessage = document.getElementById('successMessage');
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const email = emailInput.value;
-            
-            // Store email in memory (you'll want to connect this to your backend later)
-            console.log('Email submitted:', email);
-            
-            // Show success message
-            successMessage.classList.add('show');
-            emailInput.value = '';
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 5000);
-        });
-    </script>
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const userEmail = emailInput.value.trim();
+
+      // Subject & body as requested
+      const subject = "Add me to the Flowletter Ai waitlist!";
+      const bodyLines = [
+        "I'm interested in Flowletter Ai. Please add me to the waitlist.",
+        "",
+        userEmail ? `My email: ${userEmail}` : ""
+      ].join("\n");
+
+      // Open default mail app (add a recipient email if you have one)
+      const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`;
+      window.location.href = mailtoUrl;
+
+      // Optional visual confirmation
+      successMessage.classList.add('show');
+      emailInput.value = '';
+
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 5000);
+    });
+  </script>
 </body>
 </html>
