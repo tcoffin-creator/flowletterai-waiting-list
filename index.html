@@ -1,257 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Flowletter AI - Automate Your Content</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowletter AI - Automate Your Newsletter & Social Posts</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAOGSURBVFiF7ZdPaBxVHMe/v5nZ2WST3WyS1poYY0tTg1hQqCBe9ODBi3jwJHjw4MWLFw8ePHjx4sWLBw8ePHjx4sWLFw8ePHjxJIgXL168ePFQsLRQm2g2yWazs7Mz8/MwM8lmk91kE0t78XsZ3rz3fr/f5/1+7zdvBv4nQRAEQRAEQRAEQRAEQRAEQRAEQRAE4f+CfNgGDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAz/B/wNpDqEVZ7xF7QAAAAASUVORK5CYII=">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Favicon (SVG as data URL) -->
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href='data:image/svg+xml;utf8,
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
-      <rect width="96" height="96" rx="18" ry="18" fill="%232f80ed"/>
-      <g fill="none" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Envelope -->
-        <rect x="16" y="44" width="64" height="36" rx="6" />
-        <path d="M16 48l32 20 32-20" />
-        <!-- Cloud -->
-        <path d="M62 40h6a12 12 0 0 0 0-24 14 14 0 0 0-26-4 12 12 0 0 0-18 10c0 10 8 12 8 12h10"/>
-        <!-- Circuit prongs -->
-        <path d="M48 40v-6" />
-        <path d="M40 42v-4" />
-        <path d="M56 42v-4" />
-        <!-- Circuit dots -->
-        <circle cx="48" cy="30" r="2.5" fill="white" stroke="none"/>
-        <circle cx="40" cy="34" r="2.5" fill="white" stroke="none"/>
-        <circle cx="56" cy="34" r="2.5" fill="white" stroke="none"/>
-      </g>
-    </svg>'
-  />
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
 
-  <!-- Optional PNG fallbacks (host later if you want)
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
-  -->
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
 
-    nav { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
 
-    .logo {
-      font-size: 28px; font-weight: 700; color: white;
-      display: flex; align-items: center; gap: 10px;
-    }
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+        }
 
-    .logo-svg {
-      width: 40px; height: 40px; display: block; border-radius: 10px;
-    }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
 
-    .hero { text-align: center; padding: 80px 0 120px; position: relative; }
+        .hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
 
-    .hero h1 {
-      font-size: 64px; font-weight: 800; color: white;
-      margin-bottom: 24px; line-height: 1.1; animation: fadeInUp 0.8s ease-out;
-    }
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
 
-    .hero .subtitle {
-      font-size: 24px; color: rgba(255,255,255,0.9); margin-bottom: 48px;
-      max-width: 700px; margin-left: auto; margin-right: auto;
-      animation: fadeInUp 0.8s ease-out 0.2s backwards;
-    }
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-    .waitlist-form {
-      display: flex; gap: 12px; max-width: 500px; margin: 0 auto;
-      animation: fadeInUp 0.8s ease-out 0.4s backwards;
-    }
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
 
-    .waitlist-form input {
-      flex: 1; padding: 18px 24px; font-size: 16px; border: none;
-      border-radius: 12px; outline: none; background: white;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+        .features h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
 
-    .waitlist-form input:focus {
-      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
 
-    .waitlist-form button {
-      padding: 18px 36px; font-size: 16px; font-weight: 600; background: #10b981;
-      color: white; border: none; border-radius: 12px; cursor: pointer;
-      transition: all 0.3s; white-space: nowrap;
-    }
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
 
-    .waitlist-form button:hover {
-      background: #059669; transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(16,185,129,0.4);
-    }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
 
-    .features {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px; margin-top: 80px; animation: fadeInUp 0.8s ease-out 0.6s backwards;
-    }
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
 
-    .feature-card {
-      background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-      padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.3s;
-    }
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
 
-    .feature-card:hover {
-      transform: translateY(-8px); background: rgba(255,255,255,0.15);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
+        .feature-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
 
-    .feature-icon {
-      width: 60px; height: 60px; background: linear-gradient(135deg, #10b981, #059669);
-      border-radius: 15px; display: flex; align-items: center; justify-content: center;
-      font-size: 30px; margin-bottom: 20px;
-    }
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+        }
 
-    .feature-card h3 { font-size: 24px; color: white; margin-bottom: 12px; }
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
 
-    .feature-card p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    .floating-shapes { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; overflow: hidden; }
+        .step {
+            text-align: center;
+        }
 
-    .shape { position: absolute; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 20s infinite; }
-    .shape:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
-    .shape:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 10%; animation-delay: 5s; }
-    .shape:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: 10s; }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-30px) rotate(180deg); }
-    }
+        .step h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .step p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
 
-    .success-message {
-      display: none; background: #10b981; color: white; padding: 16px 24px;
-      border-radius: 12px; margin-top: 16px; animation: fadeInUp 0.5s ease-out;
-    }
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
 
-    .success-message.show { display: block; }
+        .cta-section h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 40px; }
-      .hero .subtitle { font-size: 18px; }
-      .waitlist-form { flex-direction: column; }
-      .features { grid-template-columns: 1fr; }
-    }
-  </style>
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-section .cta-button {
+            background: white;
+            color: #1a1a1a;
+        }
+
+        .cta-section .cta-button:hover {
+            background: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .features h2,
+            .how-it-works h2,
+            .cta-section h2 {
+                font-size: 32px;
+            }
+
+            .features-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="floating-shapes">
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
-
-  <div class="container">
-    <nav>
-      <div class="logo">
-        <!-- Inline SVG logo (no external file needed) -->
-        <svg class="logo-svg" viewBox="0 0 96 96" aria-hidden="true" role="img">
-          <rect width="96" height="96" rx="10" ry="10" fill="#2f80ed"/>
-          <g fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Envelope -->
-            <rect x="16" y="44" width="64" height="36" rx="6"/>
-            <path d="M16 48l32 20 32-20"/>
-            <!-- Cloud -->
-            <path d="M62 40h6a12 12 0 0 0 0-24 14 14 0 0 0-26-4 12 12 0 0 0-18 10c0 10 8 12 8 12h10"/>
-            <!-- Circuit prongs -->
-            <path d="M48 40v-6"/>
-            <path d="M40 42v-4"/>
-            <path d="M56 42v-4"/>
-            <!-- Circuit dots -->
-            <circle cx="48" cy="30" r="2.5" fill="white" stroke="none"/>
-            <circle cx="40" cy="34" r="2.5" fill="white" stroke="none"/>
-            <circle cx="56" cy="34" r="2.5" fill="white" stroke="none"/>
-          </g>
-        </svg>
-        <span>Flowletter AI</span>
-      </div>
-    </nav>
-
-    <div class="hero">
-      <h1>Content Creation,<br/>Fully Automated</h1>
-      <p class="subtitle">
-        Let AI write and schedule your Facebook posts and newsletters. Save hours every week while growing your audience.
-      </p>
-
-      <form class="waitlist-form" id="waitlistForm">
-        <input type="email" id="emailInput" placeholder="Enter your email" required />
-        <button type="submit">Join Waitlist</button>
-      </form>
-      <div class="success-message" id="successMessage">
-        🎉 You're on the list! We'll notify you when Flowletter AI launches.
-      </div>
-
-      <div class="features">
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h3>AI-Powered Writing</h3>
-          <p>Generate engaging posts and newsletters that sound like you, powered by advanced AI.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF8mlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4xLWMwMDAgNzkuZWRhMmIzZmFjLCAyMDIxLzExLzE3LTE3OjIzOjE5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjMuMSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDI1LTAxLTAyVDE0OjMwOjQ3LTA2OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNS0wMS0wMlQxNDozMTo1MC0wNjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNS0wMS0wMlQxNDozMTo1MC0wNjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YzU3YzQzZGQtYWU5ZS1mNzQ1LTk3NzAtNmE0YjU3YWYxMGRkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOmM1N2M0M2RkLWFlOWUtZjc0NS05NzcwLTZhNGI1N2FmMTBkZCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmM1N2M0M2RkLWFlOWUtZjc0NS05NzcwLTZhNGI1N2FmMTBkZCI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YzU3YzQzZGQtYWU5ZS1mNzQ1LTk3NzAtNmE0YjU3YWYxMGRkIiBzdEV2dDp3aGVuPSIyMDI1LTAxLTAyVDE0OjMwOjQ3LTA2OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjMuMSAoV2luZG93cykiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VpBk7wAAACBJREFUeJztwQENAAAAwqD3T20PBxQAAAAAAAAAAADwbgwIAAFV2BvYAAAAAElFTkSuQmCC" alt="Flowletter AI">
+                    <span>Flowletter AI</span>
+                </a>
+            </nav>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Full Automation</h3>
-          <p>Set it once and let Flowletter handle scheduling, posting, and distribution automatically.</p>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Automate Your Newsletter & Social Posts</h1>
+                <p class="subtitle">AI-powered content creation that writes and schedules your Facebook posts and newsletters automatically. Save hours every week.</p>
+                <a href="#" class="cta-button" id="ctaButton">Join the Waitlist</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Why Flowletter AI?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">✍️</div>
+                        <h3>AI Content Generation</h3>
+                        <p>Advanced AI creates engaging, on-brand content for your newsletters and social media posts automatically.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Full Automation</h3>
+                        <p>Set your preferences once and let Flowletter handle everything from writing to scheduling and posting.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Multi-Platform</h3>
+                        <p>Seamlessly manage both your Facebook presence and email newsletters from one simple dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Connect Your Accounts</h3>
+                        <p>Link your Facebook page and email platform in minutes</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Set Your Preferences</h3>
+                        <p>Tell us your brand voice, topics, and posting schedule</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Let AI Do the Work</h3>
+                        <p>Sit back while Flowletter creates and posts your content</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Automate Your Content?</h2>
+                <p>Join our waitlist and be the first to experience the future of content creation</p>
+                <a href="#" class="cta-button" id="ctaButton2">Join the Waitlist</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Flowletter AI. All rights reserved.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>Multi-Platform</h3>
-          <p>Reach your audience everywhere with seamless Facebook and newsletter integration.</p>
-        </div>
-      </div>
+    </footer>
+
+    <div class="success-message" id="successMessage">
+        ✉️ Email client opened! Send the email to join our waitlist.
     </div>
-  </div>
 
-  <script>
-    const form = document.getElementById('waitlistForm');
-    const emailInput = document.getElementById('emailInput');
-    const successMessage = document.getElementById('successMessage');
+    <script>
+        const ctaButtons = document.querySelectorAll('#ctaButton, #ctaButton2');
+        const successMessage = document.getElementById('successMessage');
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const userEmail = emailInput.value.trim();
-
-      // Subject & body as requested
-      const subject = "Add me to the Flowletter Ai waitlist!";
-      const bodyLines = [
-        "I'm interested in Flowletter Ai. Please add me to the waitlist.",
-        "",
-        userEmail ? `My email: ${userEmail}` : ""
-      ].join("\n");
-
-      // Open default mail app (add a recipient email if you have one)
-      const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`;
-      window.location.href = mailtoUrl;
-
-      // Optional visual confirmation
-      successMessage.classList.add('show');
-      emailInput.value = '';
-
-      setTimeout(() => {
-        successMessage.classList.remove('show');
-      }, 5000);
-    });
-  </script>
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const subject = encodeURIComponent("Add me to the Flowletter Ai waitlist!");
+                const body = encodeURIComponent("I'm interested in Flowletter Ai. Please add me to the waitlist.");
+                
+                window.location.href = `mailto:?subject=${subject}&body=${body}`;
+                
+                successMessage.classList.add('show');
+                
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            });
+        });
+    </script>
 </body>
 </html>
